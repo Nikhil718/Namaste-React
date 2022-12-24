@@ -22,7 +22,6 @@ const heading = React.createElement(
     [heading, heading2]
   );
   
-  console.log(heading);
   
   const root = ReactDOM.createRoot(document.getElementById("root"));
   
