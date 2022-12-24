@@ -3,7 +3,7 @@ const heading = React.createElement(
     {
       id: "title",
     },
-    "Heading 1"
+    "Nikhil R Naik"
   );
   
   const heading2 = React.createElement(
@@ -11,7 +11,7 @@ const heading = React.createElement(
     {
       id: "title",
     },
-    "Heading 2"
+    "Learning react"
   );
   
   const container = React.createElement(
