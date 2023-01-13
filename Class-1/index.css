@@ -1,3 +1,35 @@
-#container{
-    background-color: aquamarine;
+.logo-item {
+  width: 150px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  border: solid black 2px;
+}
+
+.nav-item > ul {
+  list-style-type: none;
+  display: flex;
+}
+
+.nav-item > ul > li {
+  padding: 10px;
+}
+
+.card {
+  width: 200px;
+  box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+    5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  margin: 30px;
+}
+
+.card > img {
+  width: 200px;
+}
+.restaurant-card {
+  display: flex;
+  flex-wrap: wrap;
 }

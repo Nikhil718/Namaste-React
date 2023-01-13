@@ -2,7 +2,6 @@
   "name": "namaste-react",
   "version": "1.0.0",
   "description": "",
- 
   "scripts": {
     "test": "jest",
     "start": "parcel index.html",
@@ -19,14 +18,18 @@
   },
   "homepage": "https://github.com/Nikhil718/Namaste-React#readme",
   "devDependencies": {
+    "@babel/core": "^7.20.7",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "parcel": "^2.8.2",
     "process": "^0.11.10"
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-icon": "^1.0.0",
+    "react-icons": "^4.7.1"
   },
-  "browserlist":[
+  "browserslist": [
     "last 10 Chrome versions"
   ]
 }
