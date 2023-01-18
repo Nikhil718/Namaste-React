@@ -1,38 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { FaUser } from "react-icons/fa";
+export const CARD_IMG_URL =
+  "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 
-// Header Part
-const Logo = () => {
-  return (
-    <a href="/">
-      <img
-        className="logo-item"
-        alt="logo"
-        src="https://eatstreetiow.co.uk/wp-content/uploads/2021/03/logo-for-landing.png"
-      ></img>
-    </a>
-  );
-};
-const Header = () => {
-  return (
-    <div className="header">
-      <Logo />
-      <div className="nav-item">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-//Body Part
-
-const restrautList = [
+export const restaurantList = [
   {
     type: "restaurant",
     data: {
@@ -779,46 +748,3 @@ const restrautList = [
     subtype: "basic",
   },
 ];
-
-const RestaurantCard = ({
-  cloudinaryImageId,
-  name,
-  cuisines,
-  deliveryTime,
-}) => {
-  return (
-    <div className="card">
-      <img
-        alt="image"
-        src={
-          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
-          cloudinaryImageId
-        }
-      ></img>
-      <h2>{name}</h2>
-      <h3>{cuisines.join(", ")}</h3>
-      <h4>{deliveryTime} mins</h4>
-    </div>
-  );
-};
-
-const Body = () => {
-  return (
-    <div className="restaurant-card">
-      {restrautList.map((restaurant) => {
-        return <RestaurantCard {...restaurant.data} key={restaurant.data.id} />;
-      })}
-    </div>
-  );
-};
-
-const AppLayout = () => {
-  return (
-    <>
-      <Header />
-      <Body />
-    </>
-  );
-};
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
