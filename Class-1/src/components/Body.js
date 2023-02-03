@@ -1,18 +1,14 @@
 import RestaurantCard from "./RestaurantCard";
-import { restaurantList } from "../config";
+import { restaurantList, CAROUSEL_URL } from "../config";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-// function to filter the data based on search data
-function filterData(searchText, restaurant) {
-  const filteredData = restaurant.filter((restaurant) =>
-    restaurant.data.name.toLowerCase().includes(searchText.toLowerCase())
-  );
-  return filteredData;
-}
+import { filterData } from "./shared/helper";
+import CarouselCard from "./CarouselCard";
 
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
+  const [carouselRestaurant, setcarouselRestaurant] = useState([]);
   const [filteredRes, setFilteredRes] = useState([]);
   const [searchText, setSearchText] = useState("");
 
@@ -28,19 +24,22 @@ const Body = () => {
     );
     const json = await data.json();
     console.log(json);
-    setFilteredRes(json?.data?.cards[2]?.data?.data?.cards);
     setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    setcarouselRestaurant(json?.data?.cards[0]?.data?.data?.cards);
+
+    setFilteredRes(json?.data?.cards[2]?.data?.data?.cards);
   }
+
   if (!allRestaurants) return null;
 
   return allRestaurants?.length == 0 ? (
     <Shimmer />
   ) : (
     <>
-      <div className="search-container">
+      <div className=" flex items-center  max-w-lg mx-auto p-5 ">
         <input
           type="text"
-          className="search-input"
+          className=" block w-full p-2 pl-10 text-md  border border-gray-300 rounded-2xl bg-gray-50 focus:ring-blue-500  dark:bg-purple-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black "
           placeholder="Search..."
           value={searchText}
           onChange={(e) => {
@@ -48,7 +47,7 @@ const Body = () => {
           }}
         />
         <button
-          className="search-btn"
+          className=" px-2  bg-gray-400 rounded-2xl text-white  hover:bg-gray-500 w-20 h-10"
           onClick={() => {
             const data = filterData(searchText, allRestaurants);
             {
@@ -61,7 +60,17 @@ const Body = () => {
         </button>
       </div>
 
-      <div className="restaurant-card">
+      <div className="flex px-8">
+        {carouselRestaurant.map((carouselRes) => {
+          return (
+            <Link to={""} key={carouselRes.data.bannerId}>
+              <CarouselCard {...carouselRes.data} />
+            </Link>
+          );
+        })}
+      </div>
+
+      <div className=" px-11 flex flex-wrap">
         {filteredRes.length == 0 ? (
           <h3>No match found for "{searchText}". Try different restaurant.</h3>
         ) : (
@@ -71,7 +80,7 @@ const Body = () => {
                 to={"/restaurant/" + restaurant.data.id}
                 key={restaurant.data.id}
               >
-                <RestaurantCard {...restaurant.data} />{" "}
+                <RestaurantCard {...restaurant.data} />
               </Link>
             );
           })

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const TitleLeft = () => {
   return (
     <a href="/">
-      <img className="logo-item" alt="logo" src={Logo}></img>
+      <img className="h-24 pl-2 py-2" alt="logo" src={Logo}></img>
     </a>
   );
 };
@@ -13,39 +13,66 @@ const Header = () => {
   const [loggedUser, setLoggedUser] = useState(true);
 
   return (
-    <div className="header">
+    <div className="flex justify-between  bg-white sm:p-6 dark:bg-gray-600 ">
       <TitleLeft />
-      <div className="nav-item">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
+      <div className="flex">
+        <ul className="flex py-5 ">
+          <li className="px-2">
+            <Link
+              className=" py-2 px-2 bg-gray-400 rounded-2xl text-white  hover:bg-gray-500"
+              to="/"
+            >
+              Home
+            </Link>
           </li>
-          <li>
-            <Link to="/about">About</Link>
+          <li className="px-2">
+            <Link
+              className=" py-2 px-2 bg-gray-400 rounded-2xl text-white  hover:bg-gray-500"
+              to="/about"
+            >
+              About
+            </Link>
           </li>
-          <li>
-            {" "}
-            <Link to="/contact">Contact</Link>
+          <li className="px-2">
+            <Link
+              className=" py-2 px-2 bg-gray-400 rounded-2xl text-white hover hover:bg-gray-500"
+              to="/contact"
+            >
+              Contact
+            </Link>
           </li>
-          <li>Cart</li>
+          <li className=" px-2">
+            <span className=" py-2 px-2 bg-gray-400 rounded-2xl text-white  hover:bg-gray-500">
+              {" "}
+              Cart{" "}
+            </span>
+          </li>
+          <li className=" px-2">
+            {loggedUser ? (
+              <button
+                className="pr-4"
+                onClick={() => {
+                  setLoggedUser(false);
+                }}
+              >
+                <span className="py-2 px-2  bg-red-400 rounded-2xl text-white  ">
+                  Logout
+                </span>
+              </button>
+            ) : (
+              <button
+                className="pr-4"
+                onClick={() => {
+                  setLoggedUser(true);
+                }}
+              >
+                <span className="py-2 px-2 pr-2 bg-green-400 rounded-2xl text-white ">
+                  Login
+                </span>
+              </button>
+            )}
+          </li>
         </ul>
-        {loggedUser ? (
-          <button
-            onClick={() => {
-              setLoggedUser(false);
-            }}
-          >
-            Logout
-          </button>
-        ) : (
-          <button
-            onClick={() => {
-              setLoggedUser(true);
-            }}
-          >
-            Login
-          </button>
-        )}
       </div>
     </div>
   );
