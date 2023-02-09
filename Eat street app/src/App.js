@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Header from "./components/Header";
@@ -9,14 +9,20 @@ import AboutUs from "./components/About";
 import ContactUs from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
+import Help from "./components/Help";
+import { Provider } from "react-redux";
+import store from "./components/shared/store";
+import Cart from "./components/Cart";
 
 const AppLayout = () => {
   return (
-    <>
-      <Header />
-      <Outlet />
-      <Footer />
-    </>
+    <Provider store={store}>
+      <div className="flex flex-col h-screen justify-between">
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
+    </Provider>
   );
 };
 
@@ -28,7 +34,14 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body />,
+        element: (
+          <Body
+            user={{
+              name: "Nikhil",
+              email: "naiknikhil@gmail.com",
+            }}
+          />
+        ),
       },
       {
         path: "/about",
@@ -45,8 +58,16 @@ const appRouter = createBrowserRouter([
         element: <ContactUs />,
       },
       {
+        path: "/help",
+        element: <Help />,
+      },
+      {
         path: "/restaurant/:restaurantId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

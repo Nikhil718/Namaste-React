@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { filterData } from "./shared/helper";
 import CarouselCard from "./CarouselCard";
 
-const Body = () => {
+const Body = ({ user }) => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [carouselRestaurant, setcarouselRestaurant] = useState([]);
   const [filteredRes, setFilteredRes] = useState([]);
@@ -36,10 +36,10 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
-      <div className=" flex items-center  max-w-lg mx-auto p-5 ">
+      <div className=" flex items-center  mx-auto p-5">
         <input
           type="text"
-          className=" block w-full p-2 pl-10 text-md  border border-gray-300 rounded-2xl bg-gray-50 focus:ring-blue-500  dark:bg-purple-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black "
+          className=" w-96 p-2  text-md  border border-gray-300 rounded-2xl bg-gray-50 focus:ring-blue-500  dark:bg-purple-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black "
           placeholder="Search..."
           value={searchText}
           onChange={(e) => {

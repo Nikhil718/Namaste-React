@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Logo from "../assets/img/logo.png";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const TitleLeft = () => {
   return (
@@ -11,6 +12,7 @@ const TitleLeft = () => {
 };
 const Header = () => {
   const [loggedUser, setLoggedUser] = useState(true);
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <div className="flex justify-between  bg-white sm:p-6 dark:bg-gray-600 ">
@@ -42,10 +44,23 @@ const Header = () => {
             </Link>
           </li>
           <li className=" px-2">
-            <span className=" py-2 px-2 bg-gray-400 rounded-2xl text-white  hover:bg-gray-500">
-              {" "}
-              Cart{" "}
-            </span>
+            <Link
+              className=" py-2 px-2 bg-gray-400 rounded-2xl text-white  hover:bg-gray-500"
+              to="/cart"
+            >
+              Cart-
+              <span className=" rounded-full bg-red-600 p-2 text-sm ">
+                {cartItems.length} items
+              </span>
+            </Link>
+          </li>
+          <li className="px-2">
+            <Link
+              className=" py-2 px-2 bg-gray-400 rounded-2xl text-white hover hover:bg-gray-500"
+              to="/help"
+            >
+              Help
+            </Link>
           </li>
           <li className=" px-2">
             {loggedUser ? (
