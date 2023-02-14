@@ -6,7 +6,7 @@ const CartItems = () => {
   console.log(cartItems);
 
   const dispatch = useDispatch();
-  handelRemoveItem = (item) => {
+  const handelRemoveItem = (item) => {
     dispatch(removeItem(item));
     dispatch(getTotalAmount());
   };
