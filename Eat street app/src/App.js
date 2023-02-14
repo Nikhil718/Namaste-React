@@ -13,7 +13,7 @@ import Help from "./components/Help";
 import { Provider } from "react-redux";
 import store from "./components/shared/store";
 import Cart from "./components/Cart";
-import Login from "./components/login";
+import Login from "./components/Login";
 
 const AppLayout = () => {
   return (
@@ -29,14 +29,14 @@ const AppLayout = () => {
 
 const appRouter = createBrowserRouter([
   {
+    path: "/login",
+    element: <Login />,
+  },
+  {
     path: "/",
     element: <AppLayout />,
     errorElement: <ErrorElement />,
     children: [
-      {
-        path: "/login",
-        element: <Login />,
-      },
       {
         path: "/",
         element: <Body />,

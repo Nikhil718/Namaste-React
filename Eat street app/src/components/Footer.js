@@ -4,7 +4,7 @@ const Footer = () => {
       <footer className="p-4 bg-white sm:p-6 dark:bg-gray-900 ">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
-            <a href="https://flowbite.com/" className="flex items-center">
+            <a href="#" className="flex items-center">
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                 Eat Street
               </span>
@@ -34,8 +34,11 @@ const Footer = () => {
               </h2>
               <ul className="text-gray-600 dark:text-gray-400">
                 <li className="mb-4">
-                  <a href="#" className="hover:underline ">
-                    FaceBook
+                  <a
+                    href="https://www.linkedin.com/in/nikhil-r-naik-ab3a85184/"
+                    className="hover:underline "
+                  >
+                    Linkedin
                   </a>
                 </li>
                 <li>

@@ -4,23 +4,16 @@ class Profile extends React.Component {
     super(props);
     this.state = {
       userinfo: {
-        name: "Dummy name",
-        location: "Dummy location",
+        name: "Nikhil R Naik",
+        location: "Bangalore",
       },
     };
   }
 
-  async componentDidMount() {
-    this.timer = setInterval(() => {
-      console.log("Nikhil op");
-    }, 1000);
-    console.log("Child-ComponentDidMount" + this.props.name);
-  }
   componentDidUpdate() {
     console.log("Child-componentDidUpdate");
   }
   componentWillUnmount() {
-    clearInterval(this.timer);
     console.log("Child-ComponentWillUnmount");
   }
   render() {

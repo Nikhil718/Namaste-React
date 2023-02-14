@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { filterData } from "./shared/helper";
 import CarouselCard from "./CarouselCard";
 
-const Body = ({ user }) => {
+const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [carouselRestaurant, setcarouselRestaurant] = useState([]);
   const [filteredRes, setFilteredRes] = useState([]);
@@ -47,7 +47,7 @@ const Body = ({ user }) => {
           }}
         />
         <button
-          className=" px-2  bg-gray-400 rounded-2xl text-white  hover:bg-gray-500 w-20 h-10"
+          className=" px-2  bg-gray-700 rounded-2xl text-white  hover:bg-gray-800 w-20 h-10"
           onClick={() => {
             const data = filterData(searchText, allRestaurants);
             {
