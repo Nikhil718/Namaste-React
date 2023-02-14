@@ -1,19 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
-import { clearCart } from "./shared/cartSlice";
+import { getTotalAmount, removeItem } from "./shared/cartSlice";
+
 const CartItems = () => {
   const cartItems = useSelector((store) => store.cart.items);
   console.log(cartItems);
 
   const dispatch = useDispatch();
-  const handleCartClear = () => {
-    dispatch(clearCart());
+  handelRemoveItem = (item) => {
+    dispatch(removeItem(item));
+    dispatch(getTotalAmount());
   };
 
   return (
     <ul>
       {cartItems.map((item) => (
         <div className="ml-2" key={item.id}>
-          <li className="  w-1/2 h-36 p-2 m-1 shadow-lg hover:shadow-2xl rounded-lg">
+          <li className=" w-[600px] h-36 p-2 m-1 shadow-lg hover:shadow-2xl rounded-lg">
             <div>
               <div className="text-sm font-bold ml-2">
                 {item?.name}
@@ -46,14 +48,6 @@ const CartItems = () => {
           </li>
         </div>
       ))}
-      <button
-        className="bg-red-500 hover:bg-red-600 rounded-lg p-1 m-3 text-white"
-        onClick={() => {
-          handleCartClear();
-        }}
-      >
-        Clear Cart
-      </button>
     </ul>
   );
 };

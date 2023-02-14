@@ -75,16 +75,18 @@ const Header = () => {
                 </span>
               </button>
             ) : (
-              <button
-                className="pr-4"
-                onClick={() => {
-                  setLoggedUser(true);
-                }}
-              >
-                <span className="py-2 px-2 pr-2 bg-green-400 rounded-2xl text-white ">
-                  Login
-                </span>
-              </button>
+              <Link to="/login">
+                <button
+                  className="pr-4"
+                  onClick={() => {
+                    setLoggedUser(true);
+                  }}
+                >
+                  <span className="py-2 px-2 pr-2 bg-green-400 rounded-2xl text-white ">
+                    Login
+                  </span>
+                </button>
+              </Link>
             )}
           </li>
         </ul>

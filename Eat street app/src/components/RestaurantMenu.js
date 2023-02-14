@@ -4,8 +4,10 @@ import { useParams } from "react-router-dom";
 import { CARD_IMG_URL } from "../config";
 import { addItem } from "./shared/cartSlice";
 import useRestaurant from "./shared/useRestaurant";
+import { getTotalAmount } from "./shared/cartSlice";
 
 const RestaurantMenu = () => {
+  const [isVisibal, setIsVisibal] = useState(false);
   const { restaurantId } = useParams();
   const restaurantData = useRestaurant(restaurantId);
   console.log(restaurantData);
@@ -13,6 +15,11 @@ const RestaurantMenu = () => {
 
   const handelAddItem = (item) => {
     dispatch(addItem(item));
+    setIsVisibal(true);
+    setTimeout(() => {
+      setIsVisibal(false);
+    }, 5000);
+    dispatch(getTotalAmount());
   };
 
   return !restaurantData ? (
@@ -33,6 +40,11 @@ const RestaurantMenu = () => {
         </div>
       </div>
       <div className="p-5 ml-40">
+        {isVisibal && (
+          <h1 className="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50">
+            Item added to the cart
+          </h1>
+        )}
         <h2 className="text-2xl font-bold underline ml-[38rem]">Menu</h2>
         <ul className="flex flex-wrap">
           {Object.values(restaurantData?.menu?.items).map((item) => (

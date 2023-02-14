@@ -13,6 +13,7 @@ import Help from "./components/Help";
 import { Provider } from "react-redux";
 import store from "./components/shared/store";
 import Cart from "./components/Cart";
+import Login from "./components/login";
 
 const AppLayout = () => {
   return (
@@ -33,16 +34,14 @@ const appRouter = createBrowserRouter([
     errorElement: <ErrorElement />,
     children: [
       {
-        path: "/",
-        element: (
-          <Body
-            user={{
-              name: "Nikhil",
-              email: "naiknikhil@gmail.com",
-            }}
-          />
-        ),
+        path: "/login",
+        element: <Login />,
       },
+      {
+        path: "/",
+        element: <Body />,
+      },
+
       {
         path: "/about",
         element: <AboutUs />,
