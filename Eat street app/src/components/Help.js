@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-Section = ({ title, description, isVisible, setIsVisible, setIsInvisible }) => {
+const Section = ({
+  title,
+  description,
+  isVisible,
+  setIsVisible,
+  setIsInvisible,
+}) => {
   return (
     <div className="border border-black p-2 m-2">
       <h2 className="font-bold">{title}</h2>
