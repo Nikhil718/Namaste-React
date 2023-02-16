@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CartItems from "./CartItems";
 import { clearCart, getTotalAmount } from "./shared/cartSlice";
 import CheckOut from "./CheckOut";
@@ -7,6 +7,8 @@ import { useEffect } from "react";
 
 const Cart = () => {
   const itemLength = useSelector((store) => store.cart.items.length);
+
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleCartClear = () => {
     dispatch(clearCart());

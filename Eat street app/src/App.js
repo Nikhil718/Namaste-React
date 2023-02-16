@@ -17,26 +17,28 @@ import Login from "./components/Login";
 
 const AppLayout = () => {
   return (
-    <Provider store={store}>
-      <div className="flex flex-col h-screen justify-between">
-        <Header />
-        <Outlet />
-        <Footer />
-      </div>
-    </Provider>
+    <>
+      <Provider store={store}>
+        <div className="flex flex-col h-screen justify-between">
+          <Header />
+          <Outlet />
+          <Footer />
+        </div>
+      </Provider>
+    </>
   );
 };
 
 const appRouter = createBrowserRouter([
   {
-    path: "/login",
-    element: <Login />,
-  },
-  {
     path: "/",
     element: <AppLayout />,
     errorElement: <ErrorElement />,
     children: [
+      {
+        path: "/login",
+        element: <Login />,
+      },
       {
         path: "/",
         element: <Body />,
